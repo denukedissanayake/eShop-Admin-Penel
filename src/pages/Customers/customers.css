@@ -1,0 +1,46 @@
+.user-page-container{
+    display: flex;
+    margin: 20px;
+}
+
+.user-container{
+    flex: 1;
+    margin: 10px;
+    padding: 5px 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.new-user-title{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.new-user-list{
+    list-style: none;
+    padding: 0;
+}
+
+.new-user-list-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+}
+
+.new-user-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.new-user-view-button{
+    padding: 5px 10px;
+    border: none;
+    background-color: blueviolet;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+
+}

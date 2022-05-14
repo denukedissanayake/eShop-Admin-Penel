@@ -1,0 +1,58 @@
+.transaction-page-container{
+    display: flex;
+    margin: 20px;
+}
+
+.latest-transactions-container{
+    flex: 1;
+}
+
+.latest-transactions-table{
+    width: 100%;
+    border-spacing: 10px;
+}
+
+.latest-transactions-table-header{
+    text-align: left;
+    padding-left: 2px;
+}
+
+.latest-transactions-container{
+    flex: 2;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.latest-transactions-title{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.latest-transactions-table-customer{
+    display: flex;
+    align-items: center;
+}
+
+.latest-transactions-table-customer-image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.latest-transactions-table-status{
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.latest-transactions-table-status.pending{
+    background-color: lightblue;
+}
+
+.latest-transactions-table-status.complete{
+    background-color: lightgreen;
+}
+
+.latest-transactions-table-status.cancelled{
+    background-color: lightcoral;
+}

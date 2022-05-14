@@ -2,6 +2,11 @@
     display: flex;
 }
 
-.other-screens{
-    flex: 4;
+.screens-section-container{
+    flex: 5;
+}
+
+.router-link{
+    text-decoration: none;
+    color: inherit;
 }
