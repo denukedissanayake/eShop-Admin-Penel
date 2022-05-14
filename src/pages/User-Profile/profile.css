@@ -1,0 +1,120 @@
+.profile-page-container{
+    padding: 10px;
+}
+
+.profile-page-container-title{
+    padding-left: 10px;
+}
+
+.profile-page-items{
+    display: flex;
+}
+
+.profile-details{
+    flex: 1;
+    padding: 10px;
+    margin: 0 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* justify-content: left; */
+}
+
+.profile-details-header{
+    display: flex;
+    align-items: center;
+}
+
+.profile-details-header-image{
+    height: 75px;
+    width: 75px;
+}
+
+.profile-details-header-name{
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.profile-details-title{
+    color: gray;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.profile-details-item{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.profile-details-item-name{
+    margin-left: 25px;
+}
+
+
+.edit-profile-details{
+    flex: 2;
+    padding: 10px;
+    margin: 0 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.edit-profile-details-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.edit-profile-details-items-form{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+
+}
+
+.edit-profile-details-item{
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px;
+}
+
+
+.edit-profile-details-item-label{
+    margin-bottom: 10px;
+}
+
+.edit-profile-details-item-input{
+    border: none;
+    color: gray;
+    width: 300px;
+    border-bottom: 1px solid gray;
+}
+
+.edit-profile-details-image{
+    height: 100px;
+    width: 100px;
+}
+
+.edit-profile-details-image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+
+.edit-profile-details-image-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid gray;
+    border-radius: 20px;
+}
+
+.edit-profile-details-save{
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
