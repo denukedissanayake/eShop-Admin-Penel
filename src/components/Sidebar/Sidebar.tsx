@@ -50,14 +50,18 @@ const Sidebar = () => {
               <div className='sidebar-dashboard-item'>
                     <h3 className='sidebar-dashboard-title'>QUICK LINKS</h3>
                     <ul className='sidebar-menu'>
-                        <li className='sidebar-menu-item'>
-                            <AccountCircleOutlinedIcon className='sidebar-menu-item-icon'/>
-                            ADD USERS
-                        </li>
-                        <li className='sidebar-menu-item'>
-                            <CategoryOutlinedIcon className='sidebar-menu-item-icon'/>
-                            ADD PRODUCTS
-                        </li>
+                        <Link to="/add-user" className='router-link'>
+                            <li className='sidebar-menu-item'>
+                                <AccountCircleOutlinedIcon className='sidebar-menu-item-icon'/>
+                                ADD USERS
+                            </li>
+                        </Link>
+                        <Link to="/add-product" className='router-link'>
+                            <li className='sidebar-menu-item'>
+                                <CategoryOutlinedIcon className='sidebar-menu-item-icon'/>
+                                ADD PRODUCTS
+                            </li>
+                        </Link>
                     </ul>
               </div>
               <div className='sidebar-dashboard-item'>
@@ -80,10 +84,12 @@ const Sidebar = () => {
               <div className='sidebar-dashboard-item'>
                     <h3 className='sidebar-dashboard-title'>USER</h3>
                     <ul className='sidebar-menu'>
+                    <Link to="/profile" className='router-link'>
                         <li className='sidebar-menu-item'>
                             <ManageAccountsOutlinedIcon className='sidebar-menu-item-icon'/>
                             PROFILE
                         </li>
+                    </Link>
                         <li className='sidebar-menu-item'>
                             <InsertChartOutlinedRoundedIcon className='sidebar-menu-item-icon'/>
                             LOGS

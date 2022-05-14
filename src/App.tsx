@@ -10,6 +10,9 @@ import {
   Route,
 } from "react-router-dom";
 import Transactions from './pages/Transactions/Transactions';
+import AddUser from './pages/Add-User/Add-User';
+import AddProduct from './pages/Add-Product/Add-Product';
+import Profile from './pages/User-Profile/Profile';
 
 const App = () => {
   return (
@@ -23,9 +26,12 @@ const App = () => {
               <Route path='/' element={<Home />} />
               <Route path='/customers' element={<Customers />} />
               <Route path='/products' element={<Products/>}/>
-              <Route path='/transactions' element={<Transactions/>}/>
+              <Route path='/transactions' element={<Transactions />} />
+              <Route path='/add-user' element={<AddUser/>}/>
+              <Route path='/add-product' element={<AddProduct />} />
+              <Route path='/profile' element={<Profile/>}/>
             </Routes>
-        </div>
+          </div>
         </div>
       </BrowserRouter>
     </div>
