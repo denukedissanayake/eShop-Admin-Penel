@@ -13,6 +13,7 @@ import ReportGmailerrorredOutlinedIcon from '@mui/icons-material/ReportGmailerro
 import InsertChartOutlinedRoundedIcon from '@mui/icons-material/InsertChartOutlinedRounded';
 import TagFacesIcon from '@mui/icons-material/TagFaces';
 import TheaterComedyRoundedIcon from '@mui/icons-material/TheaterComedyRounded';
+import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
 
 const Sidebar = () => {
   return (
@@ -45,6 +46,10 @@ const Sidebar = () => {
                                 TRANSACTIONS
                             </li>
                         </Link>
+                        <li className='sidebar-menu-item'>
+                                <SupervisorAccountOutlinedIcon className='sidebar-menu-item-icon'/>
+                                USERS
+                        </li>
                     </ul>
               </div>
               <div className='sidebar-dashboard-item'>

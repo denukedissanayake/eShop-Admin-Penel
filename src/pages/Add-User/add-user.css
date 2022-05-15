@@ -1,0 +1,67 @@
+.add-user-container{
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.add-user-container-label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.add-user-form{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 50px;
+    justify-content: space-between;
+}
+
+.add-user-item{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.add-user-item-label{
+    padding: 5px 0px;
+}
+
+.add-user-item-input{
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 30px;
+}
+
+.add-user-item-radio-button{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.add-user-item-role-label{
+    margin-right: 25px;
+}
+
+.add-user-item-role-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.add-user-item-button-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.add-user-item-button{
+    border: none;
+    padding: 5px 15px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
