@@ -1,3 +1,20 @@
-/* .home-page-container{
-    flex: 5;
-} */
+.home-page-container{
+    padding: 10px;
+    margin: 10px;
+}
+
+.home-page-charts-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.home-page-chart-container{
+    padding: 10px;
+    margin: 10px;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 
 const rows: GridRowsProp = [
   { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
+  { id: 2, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
+  { id: 3, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
+  { id: 4, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
+  { id: 5, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
+  { id: 6, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
 ];
 
 const columns: GridColDef[] = [
