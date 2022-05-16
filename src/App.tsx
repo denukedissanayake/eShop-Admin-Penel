@@ -14,6 +14,7 @@ import AddUser from './pages/Add-User/Add-User';
 import AddProduct from './pages/Add-Product/Add-Product';
 import Profile from './pages/User-Profile/Profile';
 import Product from './pages/Product/Product';
+import Users from './pages/Users-Admin/Users';
 
 const App = () => {
   return (
@@ -31,7 +32,8 @@ const App = () => {
               <Route path='/add-user' element={<AddUser/>}/>
               <Route path='/add-product' element={<AddProduct />} />
               <Route path='/profile' element={<Profile />} />
-              <Route path='/product/:id' element={<Product/>}/>
+              <Route path='/product/:id' element={<Product />} />
+              <Route path='/users' element={<Users/>}/>
             </Routes>
           </div>
         </div>

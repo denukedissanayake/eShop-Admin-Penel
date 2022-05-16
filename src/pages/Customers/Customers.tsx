@@ -33,43 +33,22 @@ const Customers = () => {
       <div className="user-page-container">
             <div className="user-container">
               <span className="new-user-title">Yeahh!!! New Customers (Last 24H)</span>
-              <ul className="new-user-list">
-                  <li className="new-user-list-item">
-                      <img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/>
-                      <span className="new-user-name">Denuke Dhananja</span>
-                      <span className="new-user-username">denukedd</span>
-                      <span className="new-user-email">denuke@gmail.com</span>
-                      <button className="new-user-view-button">View</button>
-                  </li>
-                  <li className="new-user-list-item">
-                      <img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/>
-                      <span className="new-user-name">Denuke Dhananja</span>
-                      <span className="new-user-username">denukedd</span>
-                      <span className="new-user-email">denuke@gmail.com</span>
-                      <button className="new-user-view-button">View</button>
-                  </li>
-                  <li className="new-user-list-item">
-                      <img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/>
-                      <span className="new-user-name">Denuke Dhananja</span>
-                      <span className="new-user-username">denukedd</span>
-                      <span className="new-user-email">denuke@gmail.com</span>
-                      <button className="new-user-view-button">View</button>
-                  </li>
-                  <li className="new-user-list-item">
-                      <img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/>
-                      <span className="new-user-name">Denuke Dhananja</span>
-                      <span className="new-user-username">denukedd</span>
-                      <span className="new-user-email">denuke@gmail.com</span>
-                      <button className="new-user-view-button">View</button>
-                  </li>
-                  <li className="new-user-list-item">
-                      <img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" />
-                      <span className="new-user-name">Denuke Dhananja</span>
-                      <span className="new-user-username">denukedd</span>
-                      <span className="new-user-email">denuke@gmail.com</span>
-                      <button className="new-user-view-button">View</button>
-                  </li>
-              </ul>
+              <table className="new-user-table">
+                  <tr className="new-user-table-item">
+                      <td><img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/></td>
+                      <td className="new-user-name">John Snow</td>
+                      <td className="new-user-username">johns</td>
+                      <td className="new-user-email">johns@gmail.com</td>
+                      <td><button className="new-user-view-button">View</button></td>
+                  </tr>
+                  <tr className="new-user-table-item">
+                      <td><img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/></td>
+                      <td className="new-user-name">John Snow</td>
+                      <td className="new-user-username">johns</td>
+                      <td className="new-user-email">johns@gmail.com</td>
+                      <td><button className="new-user-view-button">View</button></td>
+                  </tr>
+              </table>
             </div>
             <div className="all-user-table-container">
                 <div className="all-user-table">

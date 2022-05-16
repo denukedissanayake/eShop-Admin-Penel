@@ -46,10 +46,12 @@ const Sidebar = () => {
                                 TRANSACTIONS
                             </li>
                         </Link>
-                        <li className='sidebar-menu-item'>
+                        <Link to="/users" className='router-link'>
+                            <li className='sidebar-menu-item'>
                                 <SupervisorAccountOutlinedIcon className='sidebar-menu-item-icon'/>
                                 USERS
-                        </li>
+                            </li>
+                        </Link>
                     </ul>
               </div>
               <div className='sidebar-dashboard-item'>
