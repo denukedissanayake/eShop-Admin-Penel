@@ -15,7 +15,7 @@ const AddProduct = () => {
         </div>
         <div className="add-product-item description">
           <label className="add-product-item-label">Product Description</label>
-          <input className="add-product-item-input" type="text" placeholder="Enter Product Description" />
+          <textarea className="add-product-item-input" placeholder="Enter Product Description" />
         </div>
         <div className="add-product-item-selection-wrapper">
           <div className="add-product-item-selection-buttons">

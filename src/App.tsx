@@ -13,6 +13,7 @@ import Transactions from './pages/Transactions/Transactions';
 import AddUser from './pages/Add-User/Add-User';
 import AddProduct from './pages/Add-Product/Add-Product';
 import Profile from './pages/User-Profile/Profile';
+import Product from './pages/Product/Product';
 
 const App = () => {
   return (
@@ -29,7 +30,8 @@ const App = () => {
               <Route path='/transactions' element={<Transactions />} />
               <Route path='/add-user' element={<AddUser/>}/>
               <Route path='/add-product' element={<AddProduct />} />
-              <Route path='/profile' element={<Profile/>}/>
+              <Route path='/profile' element={<Profile />} />
+              <Route path='/product/:id' element={<Product/>}/>
             </Routes>
           </div>
         </div>
