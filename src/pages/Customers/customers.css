@@ -48,13 +48,14 @@
 
 .all-user-table-container{
     margin: 10px;
+    display: flex;
 }
-
 
 .all-user-table{
     width: 100%;
     height: 400px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 10px;
 }
 
 .user-list-view-button{

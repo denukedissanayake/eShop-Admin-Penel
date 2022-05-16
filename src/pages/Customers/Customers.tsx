@@ -7,18 +7,18 @@ const rows: GridRowsProp = [
   ];
 
 const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 100 },
-    {field: 'user', headerName: 'User', width: 120, renderCell: (params) => {
+    { field: 'id', headerName: 'ID', width: 100 , flex:0.25 },
+    {field: 'user', headerName: 'User', width: 120 , flex:0.5 , renderCell: (params) => {
         return (<img className="new-user-image" src={params.row.user} alt="" />
         )}
     },
-    { field: 'firstName', headerName: 'First name', width: 120 },
-    { field: 'lastName', headerName: 'Last name', width: 120 },
-    { field: 'username', headerName: 'Username', width: 120 },
-    { field: 'email', headerName: 'Email', width: 120 },
-    { field: 'status', headerName: 'Status', width: 120 },
-    { field: 'transactions', headerName: 'Transactions', width: 120 },
-    {field: 'actions', headerName: 'Actions', width: 200, renderCell: (params) => {
+    { field: 'firstName', headerName: 'First name', width: 120, flex:1 },
+    { field: 'lastName', headerName: 'Last name', width: 120, flex:1 },
+    { field: 'username', headerName: 'Username', width: 120, flex:1 },
+    { field: 'email', headerName: 'Email', width: 120, flex:1 },
+    { field: 'status', headerName: 'Status', width: 120 , flex:0.5},
+    { field: 'transactions', headerName: 'Transactions', width: 120, flex:1 },
+    {field: 'actions', headerName: 'Actions', width: 200, flex:1, renderCell: (params) => {
             return (
             <>
                 <button className="user-list-view-button">VIEW</button>
@@ -76,8 +76,8 @@ const Customers = () => {
                     <DataGrid
                         rows={rows}
                         columns={columns}
-                        pageSize={10}
-                        checkboxSelection
+                        pageSize={25}
+                        checkboxSelection={false}
                         disableSelectionOnClick
                     />
                 </div>
