@@ -1,0 +1,127 @@
+.add-product-container{
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.add-product-container-label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.add-product-form{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 50px;
+    justify-content: space-between;
+}
+
+.add-product-item{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.add-product-item.description{
+    width: 100%;
+}
+
+.add-product-item-selection-wrapper{
+    width: 100%;
+    display: flex;
+}
+
+.add-product-item-selection-buttons{
+    flex: 1;
+}
+
+.add-product-item-selection-image{
+    flex: 1;
+}
+
+.add-product-item-label{
+    padding: 5px 0px;
+}
+
+.add-product-item-input{
+    border: none;
+    border-bottom: 1px solid gray;
+    height: 30px;
+}
+
+.add-product-item-radio-button{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.add-product-item-availability-label{
+    margin-right: 25px;
+}
+
+.add-product-item-check-box{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    width: 100%;
+}
+
+.add-product-item-size-label,
+.add-product-item-color-label,
+.add-product-item-category-label{
+    margin-right: 25px;
+}
+
+.add-product-item-size-wrapper>span,
+.add-product-item-color-wrapper>span{
+    margin: 0px 5px;
+}
+
+.add-product-item-category-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.add-product-item-category-wrapper>input{
+    width: 10%;
+    margin: 0px;
+}
+
+.add-product-item-category-wrapper>span{
+    margin: 0px 5px;
+}
+
+.add-product-item-selection-image{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-product-item-selection-image-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid gray;
+    border-radius: 20px;
+}
+
+.add-product-item-button-wrapper{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.add-product-item-button{
+    border: none;
+    padding: 5px 15px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
