@@ -99,7 +99,7 @@ const Sidebar = () => {
                     </Link>
                         <li className='sidebar-menu-item'>
                             <InsertChartOutlinedRoundedIcon className='sidebar-menu-item-icon'/>
-                            LOGS
+                            LOGOUT
                         </li>
                         <li className='sidebar-menu-item'>
                             <ReportGmailerrorredOutlinedIcon className='sidebar-menu-item-icon'/>
