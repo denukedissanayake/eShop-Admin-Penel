@@ -9,7 +9,7 @@ import { useAuth } from "../../Context/AuthContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const { user, setUser } = useAuth();
   const navigation = useNavigate()
 
@@ -23,7 +23,7 @@ const Login = () => {
       })
       navigation("/");
     } else {
-      setError(true);
+      setError(data.message);
     }
   }
 
@@ -48,6 +48,9 @@ const Login = () => {
             onInput={(e: React.KeyboardEvent<HTMLInputElement>) => setPassword(e.currentTarget.value)}
           />
         </div>
+        {
+          error && <span className="login-error-message">{error}</span>
+        }
         <button
           disabled={!email || !password}
           className="login-page-item-button"

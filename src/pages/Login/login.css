@@ -55,3 +55,11 @@
     background-color: rgb(164, 162, 162);
     cursor: not-allowed;
 }
+
+.login-error-message{
+    margin: 10px auto;
+    background-color: lightcoral;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+}
