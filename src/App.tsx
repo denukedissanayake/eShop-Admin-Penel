@@ -19,10 +19,12 @@ import Product from './pages/Product/Product';
 import Users from './pages/Users-Admin/Users';
 import Login from './pages/Login/Login';
 import { useState } from 'react';
+import { useAuth } from './Context/AuthContext';
 
 const App = () => {
 
   const [logged, setLogged] = useState(false)
+  const {user} = useAuth()
 
   const AppLayout = () => (
     <>
@@ -39,7 +41,7 @@ const App = () => {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<AppLayout /> }>
+          <Route path="/" element={user ? <AppLayout /> : < Navigate to="/login" /> }>
             <Route path='/' element={<Home />} />
             <Route path='/customers' element={<Customers />} />
             <Route path='/products' element={<Products />} />
@@ -50,7 +52,7 @@ const App = () => {
             <Route path='/product/:id' element={<Product />} />
             <Route path='/users' element={<Users />} />
           </Route>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={user ? < Navigate to="/" /> : <Login />} />
         </Routes>
       </BrowserRouter>
     </div>

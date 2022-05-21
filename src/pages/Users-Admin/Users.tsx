@@ -6,6 +6,7 @@ const Users = () => {
         <div className="user-container">
             <span className="user-title">Admin Users</span>
               <table className="admin-user-table">
+                <tbody>
                 <tr className="admin-user-table-row">
                     <td className="admin-user-table-id">1</td>
                     <td className="admin-user-table-user">
@@ -34,6 +35,7 @@ const Users = () => {
                         <button className="admin-user-table-actions-button delete">DELETE</button>
                     </td>
                   </tr>
+                </tbody>
               </table>
         </div>
     </div>

@@ -1,5 +1,8 @@
 import "./customers.css"
 import { DataGrid, GridRowsProp, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { getRecentCustomers } from './data/get-all-customers'
+import { useEffect, useState } from "react";
+import { useAuth } from "../../Context/AuthContext";
 
 const rows: GridRowsProp = [
     { id: 1, user: "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=", firstName: 'Snow', lastName: 'Jon', username: 'johndd', email: 'Jon@gmail.com', status: 'active', transactions: "$1000" },
@@ -29,26 +32,37 @@ const columns: GridColDef[] = [
   ];
 
 const Customers = () => {
+    const { user } = useAuth()
+    const [recentCustomers, setRecentCustomers] = useState<any>()
+
+    useEffect(() => {
+        const fetchRecentCustomers = async () => {
+            const { data } = await getRecentCustomers(user?.accesToken)
+            setRecentCustomers(data);
+        }
+        fetchRecentCustomers();
+    }, [])
+    
+    console.log(recentCustomers)
+
   return (
       <div className="user-page-container">
             <div className="user-container">
               <span className="new-user-title">Yeahh!!! New Customers (Last 24H)</span>
-              <table className="new-user-table">
-                  <tr className="new-user-table-item">
-                      <td><img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/></td>
-                      <td className="new-user-name">John Snow</td>
-                      <td className="new-user-username">johns</td>
-                      <td className="new-user-email">johns@gmail.com</td>
-                      <td><button className="new-user-view-button">View</button></td>
-                  </tr>
-                  <tr className="new-user-table-item">
-                      <td><img className="new-user-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt=""/></td>
-                      <td className="new-user-name">John Snow</td>
-                      <td className="new-user-username">johns</td>
-                      <td className="new-user-email">johns@gmail.com</td>
-                      <td><button className="new-user-view-button">View</button></td>
-                  </tr>
-              </table>
+              {recentCustomers ?
+                  <table className="new-user-table">
+                    <tbody>
+                        {recentCustomers.map((customer : any) => (
+                          <tr className="new-user-table-item" key={customer._id}>
+                                <td><img className="new-user-image" src={customer.photo || "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8="} alt="" /></td>
+                              <td className="new-user-name">{`${customer.firstname} ${customer.lastname}`}</td>
+                                <td className="new-user-username">{customer.username}</td>
+                                <td className="new-user-email">{customer.email}</td>
+                                <td><button className="new-user-view-button">View</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                  </table> : <span>No New Customers in Last 24 Hours</span>}
             </div>
             <div className="all-user-table-container">
                 <div className="all-user-table">
