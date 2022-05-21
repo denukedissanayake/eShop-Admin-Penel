@@ -50,3 +50,8 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.login-page-item-button:disabled{
+    background-color: rgb(164, 162, 162);
+    cursor: not-allowed;
+}
