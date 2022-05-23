@@ -12,6 +12,7 @@ const AddProduct = () => {
   const [name, setName] = useState<string>("");
   const [brand, setBrand] = useState<string>("");
   const [price, setPrice] = useState<string>("");
+  const [stock, setStock] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [availability, setAvailability] = useState<string>("Available");
   const [sizes, setSizes] = useState<string[]>([]);
@@ -149,8 +150,18 @@ const AddProduct = () => {
             value={price}
             className="add-product-item-input"
             type="text"
-            placeholder="Enter Product Brand Price"
+            placeholder="Enter Product Price"
             onChange={(e:any) => setPrice(e.target.value) }
+          />
+        </div>
+        <div className="add-product-item">
+          <label className="add-product-item-label">Product Stock Count</label>
+          <input
+            value={stock}
+            className="add-product-item-input"
+            type="text"
+            placeholder="Enter Product Stock Count"
+            onChange={(e:any) => setStock(e.target.value) }
           />
         </div>
         <div className="add-product-item-selection-wrapper">

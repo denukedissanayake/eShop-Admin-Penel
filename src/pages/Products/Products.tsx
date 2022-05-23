@@ -1,15 +1,10 @@
 import "./products.css"
-import { DataGrid, GridRowsProp, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { Link } from "react-router-dom";
-
-const rows: GridRowsProp = [
-  { id: 1, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 2, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 3, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 4, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 5, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-  { id: 6, product: "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png", name: 'Addidas Bag', price: '$105', avalibility: 'Available', stock_count: '8' },
-];
+import { getAllProducts } from "./data/get-all-products";
+import { useAuth } from "../../Context/AuthContext";
+import { useEffect, useState } from "react";
+import { DUMMY_PRODUCT_IMAGE } from "../../utils/additional-data";
 
 const columns: GridColDef[] = [
   { field: 'id', headerName: 'ID', width: 100, flex:0.5 },
@@ -32,16 +27,43 @@ const columns: GridColDef[] = [
 ];
 
 const Products = () => {
+  const { user } = useAuth()
+  const [products, setProducts] = useState<any>()
+
+  const fetchAllProducts = async () => {
+    const allProducts :any[] = []
+    const { data } = await getAllProducts(user?.accesToken)
+
+    console.log(data)
+
+    data && data.forEach((prod : any)=> {
+      allProducts.push({
+        id: prod._id,
+        product: prod.image || DUMMY_PRODUCT_IMAGE,
+        name: prod.name,
+        price: prod.price,
+        avalibility: prod.isAvailable ? "Available" : "Not-Available",
+        stock_count: prod.stock || "-"
+      })
+    });
+
+    setProducts(allProducts);
+  }
+
+  useEffect(() => {
+    fetchAllProducts()
+  }, [])
+
   return (
     <div className="all-products-container">
       <div className="all-products-table">
-        <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={25}
-            checkboxSelection={false}
-            disableSelectionOnClick
-        />
+        {products && <DataGrid
+          rows={products}
+          columns={columns}
+          pageSize={25}
+          checkboxSelection={false}
+          disableSelectionOnClick
+        />}
       </div>
     </div>
   )
