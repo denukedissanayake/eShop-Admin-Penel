@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "shop-admin-playground",
     "public": "build",
     "ignore": [
       "firebase.json",

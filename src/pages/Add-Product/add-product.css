@@ -106,6 +106,15 @@
     padding: 25px;
     border: 2px solid gray;
     border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 60%;
+}
+
+.add-product-image{
+    height: 100%;
+    width: 100%;
 }
 
 .add-product-item-button-wrapper{
@@ -124,4 +133,18 @@
     font-size: 20px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.add-product-item-button:disabled{
+    background-color: rgb(215, 212, 212);
+    cursor: not-allowed;
+}
+
+.product-added-info-alerts{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
 }
