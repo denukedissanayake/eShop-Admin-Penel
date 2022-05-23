@@ -220,8 +220,16 @@ const AddProduct = () => {
           <div className="add-product-item-selection-image">
             <div className="add-product-item-selection-image-wrapper">
               <img alt="" className="add-product-image" src={photo ? URL.createObjectURL(photo) : undefined} />
-              <label htmlFor="file">{!photo ? "Upload Image" : "Remove Image"}</label>
-              <input id="file" type="file" style={{ display: "none" }} onChange={(e:any) => setPhoto(e.target.files[0]) }/>
+              {!photo &&
+                <>
+                  <label htmlFor="file">Upload Image</label>
+                  <input id="file" type="file" style={{ display: "none" }} onChange={(e: any) => setPhoto(e.target.files[0])} />
+                </>}
+              {photo &&  
+                <>
+                  <label onClick={() => setPhoto(undefined)}>Remove Image</label>
+                </>
+              }
               </div>
           </div>
         </div>
