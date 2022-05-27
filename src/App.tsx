@@ -32,7 +32,6 @@ const App = () => {
     }
   }
   
-
   const AppLayout = () => (
     <>
       <Navbar /><div className="screens-container">

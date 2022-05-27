@@ -18,9 +18,9 @@ const Login = () => {
 
     if (data.accesToken) {
       const userDetails = jwtDecode<JwtPayload>(data.accesToken);
-      const { username, name, email, contactDetails, location, role, photo } = userDetails as any;
+      const { username, name, email, contactdetails, location, role, photo, id } = userDetails as any;
       setUser({
-        username, name, email, contactDetails, location, role, photo, accesToken: data.accesToken
+        username, name, email, contactdetails, location, role, photo, accesToken: data.accesToken, id
       })
       navigation("/");
     } else {

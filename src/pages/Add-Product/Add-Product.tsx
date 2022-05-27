@@ -1,11 +1,10 @@
 import { useState } from "react";
 import "./add-product.css";
-import { app } from "../../utils/firebase-storage";
-import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { addNewProduct } from "./data/add-product";
 import { useAuth } from "../../Context/AuthContext";
 import { DUMMY_PRODUCT_IMAGE } from "../../utils/additional-data";
 import Alert from '@mui/material/Alert';
+import { uploadImage } from "../../utils/image-upload-firebase";
 
 const AddProduct = () => {
   const [photo, setPhoto] = useState<File | undefined>(undefined);
@@ -23,62 +22,43 @@ const AddProduct = () => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const { user } = useAuth();
 
-  const [xs, setXs] = useState(false)
-
-  const addProduct = (e: React.SyntheticEvent) => {
+  const addProduct = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setIsLoading(true)
 
-    const filename = new Date().getTime() + photo!.name 
-    const storage = getStorage(app)
-    const storageRef = ref(storage, filename)
+    const photoUrl = await uploadImage(photo!);
 
-    const uploadTask = uploadBytesResumable(storageRef, photo!);
+    const newProduct = {
+      name,
+      description,
+      size: sizes,
+      color: colors,
+      categories,
+      isAvailable: availability === "Available" ? true : false,
+      image: photoUrl || DUMMY_PRODUCT_IMAGE,
+      price,
+      brand,
+    }
 
-    uploadTask.on('state_changed', 
-      (snapshot) => {
-        // const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        // console.log('Upload is ' + progress + '% done');
-      },
-      (error) => {
-        console.log("error while uploading photo", error)
-      }, 
-      async () => {
-        const photoUrl = await getDownloadURL(uploadTask.snapshot.ref);
-
-        const newProduct = {
-          name,
-          description,
-          size: sizes,
-          color: colors,
-          categories,
-          isAvailable: availability === "Available" ? true : false,
-          image: photoUrl || DUMMY_PRODUCT_IMAGE,
-          price,
-          brand,
-        }
-
-        const { data, error } = await addNewProduct(newProduct, user?.accesToken);
-        setIsLoading(false)
-        if (error) {
-          setIsError(true)
-          setTimeout(() => setIsError(false), 3000)
-          return;
-        } 
-        if (!error && data) {
-          setIsSuccess(true)
-          setPhoto(undefined);
-          setName("")
-          setBrand("")
-          setPrice("")
-          setDescription("")
-          setAvailability("Available")
-          setTimeout(() => {
-            setIsSuccess(false)
-          }, 3000)
-        }
-      }
-    );
+    const { data, error } = await addNewProduct(newProduct, user?.accesToken);
+    setIsLoading(false)
+    if (error) {
+      setIsError(true)
+      setTimeout(() => setIsError(false), 3000)
+      return;
+    } 
+    if (!error && data) {
+      setIsSuccess(true)
+      setPhoto(undefined);
+      setName("")
+      setBrand("")
+      setPrice("")
+      setDescription("")
+      setAvailability("Available")
+      setTimeout(() => {
+        setIsSuccess(false)
+      }, 3000)
+    }
   } 
 
   const selectSizes = (e: any) => {
@@ -194,7 +174,7 @@ const AddProduct = () => {
             <div className="add-product-item-check-box">
               <label className="add-product-item-size-label">Sizes</label>
               <div className="add-product-item-size-wrapper">
-                <span><input type="checkbox" name="size" value="Extra Small" checked={xs} onChange={selectSizes} />Extra Small</span>
+                <span><input type="checkbox" name="size" value="Extra Small" onChange={selectSizes} />Extra Small</span>
                 <span><input type="checkbox" name="size" value="Small" onChange={selectSizes} />Small</span>
                 <span><input type="checkbox" name="size" value="Medium" onChange={selectSizes} />Medium</span>
                 <span><input type="checkbox" name="size" value="Large" onChange={selectSizes} />Large</span>

@@ -2,10 +2,11 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 type UserType = {
     accesToken: string,
+    id: string,
     username: string,
     name: string,
     email: string,
-    contactDetails?: string,
+    contactdetails?: string,
     location?: string,
     role: string,
     photo?: string
