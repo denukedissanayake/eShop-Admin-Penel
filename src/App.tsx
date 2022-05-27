@@ -18,13 +18,20 @@ import Profile from './pages/User-Profile/Profile';
 import Product from './pages/Product/Product';
 import Users from './pages/Users-Admin/Users';
 import Login from './pages/Login/Login';
-import { useState } from 'react';
 import { useAuth } from './Context/AuthContext';
+import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 const App = () => {
 
-  const [logged, setLogged] = useState(false)
-  const {user} = useAuth()
+  const { user } = useAuth()
+
+  if (user) {
+    const { exp } = jwtDecode<JwtPayload>(user.accesToken);
+    if (exp! * 1000 < new Date().getTime()) {
+      localStorage.removeItem('user');
+    }
+  }
+  
 
   const AppLayout = () => (
     <>

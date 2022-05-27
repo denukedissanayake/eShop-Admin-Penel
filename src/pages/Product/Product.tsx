@@ -1,72 +1,110 @@
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom"
+import { useAuth } from "../../Context/AuthContext";
+import { DUMMY_PRODUCT_IMAGE } from "../../utils/additional-data";
+import { getProductById } from "./data/get-product-by-id";
 import "./product.css"
 
 const Product = () => {
+  const location = useLocation();
+  const { user } = useAuth()
+  const [productDetails, setProductDetails] = useState<any>()
+  const [isLoading, setIsLoading] = useState(false)
+  const [photo, setPhoto] =useState<File | undefined>(undefined) 
+
+  const productId = location.pathname.split("/")[2];
+
+  const fetchProdutById = async () => {
+    setIsLoading(true)
+    const { data } = await getProductById(user?.accesToken, productId)
+    setProductDetails(data)
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    fetchProdutById()
+  }, [])
+
+  console.log(productDetails)
+
   return (
     <div className="product-page-container">
-      <h2 className="product-page-container-title">Product - Addidas Shoe</h2>
-      <div className="product-page-items">
+      {isLoading ? <h1>Loading...</h1> : 
+        <>
+          <h2 className="product-page-container-title">{`${productDetails?.name} - ${productDetails?.brand}`}</h2><div className="product-page-items">
 
-        <div className="product-page-item-details">
-          <div className="product-details-header">
-            <img className="product-details-header-image" src="https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png" alt="" />
-            <span className="product-details-header-name">Shoe - Addidas</span>
-          </div>
-          <span className="product-details-title" >Product Details</span>
-          <div className="product-details-item">
-              <span><b>Product Name:</b></span>
-              <span className="product-details-item-name">Shoe</span>
-          </div>
-          <div className="product-details-item">
-              <span><b>Brand Name:</b></span>
-              <span className="product-details-item-name">Addidas</span>
-          </div>
-          <div className="product-details-item">
-              <span><b>Description:</b></span>
-              <span className="product-details-item-name">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</span>
-          </div>
-          <div className="product-details-item">
-              <span><b>Availability:</b></span>
-              <span className="product-details-item-name">Available</span>
-          </div>
-          <div className="product-details-item">
-              <span><b>Colors:</b></span>
-              <span className="product-details-item-name">Black</span>
-              <span className="product-details-item-name">Red</span>
-          </div>
-          <div className="product-details-item">
-              <span><b>Sizes:</b></span>
-              <span className="product-details-item-name">Small Medium Large</span>
-          </div>
-        </div>
-
-        <div className="product-page-items-edit">
-          <span className="edit-product-details-title">EDIT DETAILS</span>
-          <form className="edit-product-details-items-form" >
-            <div className="edit-product-details-items-container-wrapper">
-              <div className="edit-product-details-items-container">
-                <div className="edit-product-details-item">
-                    <label className="edit-product-details-item-label">Product Name</label>
-                    <input className="edit-product-details-item-input" defaultValue="shoe" placeholder="Enter Product Name" type="text"/>
-                </div>
-                <div className="edit-product-details-item">
-                  <label className="edit-product-details-item-label">Product Brand</label>
-                  <input className="edit-product-details-item-input" defaultValue="Addidas" placeholder="Enter Product Brand" type="text"/>
-                </div>
-                <div className="edit-product-details-item">
-                    <label className="edit-product-details-item-label">Product Name</label>
-                    <textarea className="edit-product-details-item-input" defaultValue="shoe" placeholder="Enter Product Name"/>
-                </div>
-              </div>
-              <div>
-                <div className="edit-product-details-image-wrapper">
-                  <img alt="" className="edit-product-details-image" src="https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png" />
-                  <label htmlFor="file">Upload Image</label>
-                  <input id="file" type="file" style={{display: "none"}}/>
-                </div>
-              </div>
+          <div className="product-page-item-details">
+            <div className="product-details-header">
+              <img className="product-details-header-image" src={productDetails?.image || DUMMY_PRODUCT_IMAGE}  alt="" />
+              <span className="product-details-header-name">{`${productDetails?.name} - ${productDetails?.brand}`}</span>
             </div>
-            
-            <div className="add-product-item-selection-buttons">
+            <span className="product-details-title">Product Details</span>
+            <div className="product-details-item">
+              <span><b>Product Name:</b></span>
+              <span className="product-details-item-name">{`${productDetails?.name}`}</span>
+            </div>
+            <div className="product-details-item">
+              <span><b>Brand Name:</b></span>
+              <span className="product-details-item-name">{`${productDetails?.brand}`}</span>
+            </div>
+            <div className="product-details-item">
+              <span><b>Description:</b></span>
+              <span className="product-details-item-name">{`${productDetails?.description}`}</span>
+            </div>
+            <div className="product-details-item">
+              <span><b>Availability:</b></span>
+              <span className="product-details-item-name">{productDetails?.isAvailable ? "Available" : "Not-Available"}</span>
+            </div>
+            <div className="product-details-item">
+              <span><b>Colors:</b></span>
+                {productDetails?.color.map((c :string) => (
+                  <span key={c} className="product-details-item-name">{c}</span>
+              ))}
+            </div>
+            <div className="product-details-item">
+              <span><b>Sizes:</b></span>
+              {productDetails?.size.map((s :string) => (
+                  <span key={s} className="product-details-item-name">{s}</span>
+              ))}
+            </div>
+          </div>
+
+          <div className="product-page-items-edit">
+            <span className="edit-product-details-title">EDIT DETAILS</span>
+            <form className="edit-product-details-items-form">
+              <div className="edit-product-details-items-container-wrapper">
+                <div className="edit-product-details-items-container">
+                  <div className="edit-product-details-item">
+                    <label className="edit-product-details-item-label">Product Name</label>
+                    <input className="edit-product-details-item-input" defaultValue={productDetails?.name} placeholder="Enter Product Name" type="text" />
+                  </div>
+                  <div className="edit-product-details-item">
+                    <label className="edit-product-details-item-label">Product Brand</label>
+                    <input className="edit-product-details-item-input" defaultValue={productDetails?.brand} placeholder="Enter Product Brand" type="text" />
+                  </div>
+                  <div className="edit-product-details-item">
+                    <label className="edit-product-details-item-label">Product Description</label>
+                    <textarea className="edit-product-details-item-input" defaultValue={productDetails?.description} placeholder="Enter Product Name" />
+                  </div>
+                </div>
+                <div>
+                  <div className="edit-product-details-image-wrapper">
+                    <img alt="" className="edit-product-details-image" defaultValue={productDetails?.image} src={photo ? URL.createObjectURL(photo) : productDetails?.image} />
+                    {!photo &&
+                      <>
+                        <label htmlFor="file">Upload Image</label>
+                        <input id="file" type="file" style={{ display: "none" }} onChange={(e: any) => setPhoto(e.target.files[0])} />
+                      </>}
+                    {photo &&  
+                      <>
+                        <label onClick={() => setPhoto(undefined)}>Remove Image</label>
+                      </>
+                    }
+                  </div>
+                </div>
+              </div>
+
+              <div className="add-product-item-selection-buttons">
                 <div className="add-product-item-radio-button">
                   <label className="add-product-item-availability-label">Availablity</label>
                   <div className="add-product-item-availability-wrapper">
@@ -110,14 +148,16 @@ const Product = () => {
                     <span><input type="checkbox" name="category" value="Other" />Other</span>
                   </div>
                 </div>
-            </div>
-            
-            <div className="edit-product-details-save-button-wrapper">
-              <button className="edit-product-details-save">UPDATE</button>
-            </div>
-          </form>
-        </div>
-      </div>
+              </div>
+
+              <div className="edit-product-details-save-button-wrapper">
+                <button className="edit-product-details-save">UPDATE</button>
+              </div>
+            </form>
+          </div>
+          </div>
+        </>
+      }
     </div>
   )
 }

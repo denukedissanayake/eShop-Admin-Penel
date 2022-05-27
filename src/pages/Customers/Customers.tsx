@@ -62,7 +62,7 @@ const Customers = () => {
     fetchAllCustomers();
   }, [])
 
-  console.log(allCustomers)
+  console.log(recentCustomers)
 
   return (
       <div className="user-page-container">
