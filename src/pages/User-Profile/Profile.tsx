@@ -25,10 +25,6 @@ const Profile = () => {
 
     if (photo) {
       photoUrl = await uploadImage(photo)
-      setUpdatedUser({
-        ...updatedUser,
-        photo : photoUrl
-      })
     }
 
     let updatedData = {...updatedUser}
