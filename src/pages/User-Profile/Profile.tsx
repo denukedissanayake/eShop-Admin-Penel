@@ -25,9 +25,20 @@ const Profile = () => {
 
     if (photo) {
       photoUrl = await uploadImage(photo)
+      setUpdatedUser({
+        ...updatedUser,
+        photo : photoUrl
+      })
     }
 
-    const { data, error } = await updateProfile({ ...updatedUser, photo: photoUrl }, user?.id, user?.accesToken);
+    let updatedData = {...updatedUser}
+    if (photoUrl !== "") {
+      updatedData = {...updatedUser, photo : photoUrl}
+    } 
+
+    const { data, error } = await updateProfile({ ...updatedData }, user?.id, user?.accesToken);
+
+    console.log(data, error)
 
     if (!error && data) {
       setUser({
@@ -127,7 +138,7 @@ const Profile = () => {
                   })}
                 />
               </div>
-              <label>Need to Change Your Password?</label>
+              <h3>Need to Change Your Password?</h3>
               <div className="edit-profile-details-item">
                 <label className="edit-profile-details-item-label">Old Password</label>
                 <input
