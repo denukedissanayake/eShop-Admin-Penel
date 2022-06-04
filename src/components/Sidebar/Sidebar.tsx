@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Sidebar.css'
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Modal } from '@mui/material';
 
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
@@ -36,53 +36,53 @@ const Sidebar = () => {
                 <div className='sidebar-dashboard-item'>
                         <h3 className='sidebar-dashboard-title'>DASHBOARD</h3>
                         <ul className='sidebar-menu'>
-                            <Link to="/" className='router-link'>
+                            <NavLink to="/" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <HomeOutlinedIcon className='sidebar-menu-item-icon'/>
                                     HOME
                                 </li>
-                            </Link>
-                            <Link to="/customers" className='router-link'>
+                            </NavLink>
+                            <NavLink to="/customers" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <TagFacesIcon className='sidebar-menu-item-icon'/>
                                     CUSTOMERS
                                 </li>
-                            </Link>
-                            <Link to="/products" className='router-link'>
+                            </NavLink>
+                            <NavLink to="/products" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <TheaterComedyRoundedIcon className='sidebar-menu-item-icon'/>
                                     PRODUCTS
                                 </li>
-                            </Link>
-                            <Link to="/transactions" className='router-link'>
+                            </NavLink>
+                            <NavLink to="/transactions" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <PaidOutlinedIcon className='sidebar-menu-item-icon'/>
                                     TRANSACTIONS
                                 </li>
-                            </Link>
-                            <Link to="/users" className='router-link'>
+                            </NavLink>
+                            <NavLink to="/users" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <SupervisorAccountOutlinedIcon className='sidebar-menu-item-icon'/>
                                     USERS
                                 </li>
-                            </Link>
+                            </NavLink>
                         </ul>
                 </div>
                 <div className='sidebar-dashboard-item'>
                         <h3 className='sidebar-dashboard-title'>QUICK LINKS</h3>
                         <ul className='sidebar-menu'>
-                            <Link to="/add-user" className='router-link'>
+                            <NavLink to="/add-user" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <AccountCircleOutlinedIcon className='sidebar-menu-item-icon'/>
                                     ADD USERS
                                 </li>
-                            </Link>
-                            <Link to="/add-product" className='router-link'>
+                            </NavLink>
+                            <NavLink to="/add-product" className='router-link'>
                                 <li className='sidebar-menu-item'>
                                     <CategoryOutlinedIcon className='sidebar-menu-item-icon'/>
                                     ADD PRODUCTS
                                 </li>
-                            </Link>
+                            </NavLink>
                         </ul>
                 </div>
                 <div className='sidebar-dashboard-item'>
@@ -105,12 +105,12 @@ const Sidebar = () => {
                 <div className='sidebar-dashboard-item'>
                         <h3 className='sidebar-dashboard-title'>USER</h3>
                         <ul className='sidebar-menu'>
-                        <Link to="/profile" className='router-link'>
+                        <NavLink to="/profile" className='router-link'>
                             <li className='sidebar-menu-item'>
                                 <ManageAccountsOutlinedIcon className='sidebar-menu-item-icon'/>
                                 PROFILE
                             </li>
-                        </Link>
+                        </NavLink>
                             <li className='sidebar-menu-item' onClick={() => setShowModal(true)}>
                                 <InsertChartOutlinedRoundedIcon className='sidebar-menu-item-icon'/>
                                 LOGOUT

@@ -11,6 +11,10 @@
     color: inherit;
 }
 
+.active li {
+    background-color: rgb(159, 216, 241);
+}
+
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
