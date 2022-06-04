@@ -18,7 +18,7 @@ const AddUser = () => {
     const { data, error } = await addNewuser(newUser, user?.accesToken);
   
     setIsLoading(false)
-    if (error) {
+    if (error || typeof data == "string") {
       setIsError(true)
       setTimeout(() => setIsError(false), 3000)
       return;

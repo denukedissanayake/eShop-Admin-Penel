@@ -9,12 +9,15 @@ import { DUMMY_USER_IMAGE } from "../../utils/additional-data";
 import { useState } from "react";
 import { updateProfile } from "./data/update-profile";
 import { uploadImage } from "../../utils/image-upload-firebase";
+import Alert from "@mui/material/Alert";
 
 const Profile = () => {
   const { user ,setUser } = useAuth()
   const [photo, setPhoto] = useState<File | undefined>(undefined) 
   const [updatedUser, setUpdatedUser] = useState<any>({})
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isError, setIsError] = useState<boolean>(false);
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
   const updateUser = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -34,14 +37,24 @@ const Profile = () => {
 
     const { data, error } = await updateProfile({ ...updatedData }, user?.id, user?.accesToken);
 
+    setIsLoading(false)
+
+    if (error || typeof data == "string") {
+      setIsError(true)
+      setTimeout(() => setIsError(false), 3000)
+      return;
+    } 
+
     if (!error && data) {
       setUser({
         ...user,
         ...data
       })
+      setIsSuccess(true)
+      setTimeout(() => {
+        setIsSuccess(false)
+      }, 3000)
     }
-
-    setIsLoading(false)
   };
 
 
@@ -174,6 +187,10 @@ const Profile = () => {
                         <label onClick={() => setPhoto(undefined)}>Remove</label>
                       </>
                     }
+              </div>
+              <div className="user-updated-info-alertss">
+                {isError && <Alert severity="error">User Updating Failed. Please Try Again!</Alert>}
+                {isSuccess &&  <Alert severity="success">User Updated Succesfully!</Alert>}
               </div>
               <div>
                 <button onClick={updateUser}

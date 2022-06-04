@@ -42,7 +42,7 @@ const AddProduct = () => {
 
     const { data, error } = await addNewProduct(newProduct, user?.accesToken);
     setIsLoading(false)
-    if (error) {
+    if (error || typeof data == "string") {
       setIsError(true)
       setTimeout(() => setIsError(false), 3000)
       return;
