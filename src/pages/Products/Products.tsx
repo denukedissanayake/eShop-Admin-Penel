@@ -34,8 +34,6 @@ const Products = () => {
     const allProducts :any[] = []
     const { data } = await getAllProducts(user?.accesToken)
 
-    console.log(data)
-
     data && data.forEach((prod : any)=> {
       allProducts.push({
         id: prod._id,

@@ -62,8 +62,6 @@ const Customers = () => {
     fetchAllCustomers();
   }, [])
 
-  console.log(recentCustomers)
-
   return (
       <div className="user-page-container">
             <div className="user-container">
@@ -74,7 +72,7 @@ const Customers = () => {
                         {recentCustomers && recentCustomers.map((customer : any) => (
                           <tr className="new-user-table-item" key={customer._id}>
                                 <td><img className="new-user-image" src={customer.photo || DUMMY_USER_IMAGE} alt="" /></td>
-                              <td className="new-user-name">{`${customer.firstname} ${customer.lastname}`}</td>
+                                <td className="new-user-name">{`${customer.firstname} ${customer.lastname}`}</td>
                                 <td className="new-user-username">{customer.username}</td>
                                 <td className="new-user-email">{customer.email}</td>
                                 <td><button className="new-user-view-button">View</button></td>

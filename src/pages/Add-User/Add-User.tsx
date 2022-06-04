@@ -114,7 +114,7 @@ const AddUser = () => {
             <input
               type="radio"
               name="role"
-              value="admin"
+              value="Admin"
               checked={newUser?.role === 'admin' || false}
               onChange={(e: any) => {
                 setNewUser({ ...newUser, role: e.target.value })
@@ -124,7 +124,7 @@ const AddUser = () => {
             <input
               type="radio"
               name="role"
-              value="moderator"
+              value="Moderator"
               checked={newUser?.role === 'moderator' || false}
               onChange={(e: any) => {
                 setNewUser({ ...newUser, role: e.target.value })

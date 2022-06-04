@@ -16,20 +16,12 @@
     font-weight: 600;
 }
 
-.admin-user-table{
-    width: 100%;
-    border-spacing: 10px;
-}
-
-.admin-user-table-row{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-}
-
 .admin-user-table-header{
     text-align: left;
+}
+
+.admin-user-table{
+    width: 100%;
 }
 
 .admin-user-table-user{
@@ -41,25 +33,28 @@
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    margin-right: 5px;
 }
 
-.admin-user-table-actions-button.view{
+.admin-user-table-actions-button{
     padding: 5px 10px;
     border: none;
     background-color: blueviolet;
     color: #fff;
     font-weight: bold;
     border-radius: 5px;
+    margin-left: 20px;
     cursor: pointer;
 }
 
+.admin-user-table-actions-button.view{
+    background-color: blueviolet;
+}
+
 .admin-user-table-actions-button.delete{
-    padding: 5px 10px;
-    border: none;
     background-color: red;
-    color: #fff;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-left: 20px;
-    cursor: pointer;
+}
+
+.admin-user-table-actions-button.edit{
+    background-color: blue;
 }
