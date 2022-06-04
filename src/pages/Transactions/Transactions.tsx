@@ -15,8 +15,6 @@ const Transactions = () => {
   useEffect(() => {
     fetchOrders();
   }, [])
-
-  console.log(orders)
   
   return (
       <div className="transaction-page-container">
