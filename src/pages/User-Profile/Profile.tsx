@@ -34,8 +34,6 @@ const Profile = () => {
 
     const { data, error } = await updateProfile({ ...updatedData }, user?.id, user?.accesToken);
 
-    console.log(data, error)
-
     if (!error && data) {
       setUser({
         ...user,

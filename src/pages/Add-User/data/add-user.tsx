@@ -1,8 +1,6 @@
 export const addNewUser = async (user :any, token?: string) => {
     let data :any = null
     let error :any = null
-
-    console.log("product", JSON.stringify({ ...user }))
     
     const baseURL = (process.env.NODE_ENV === "development") ? process.env.REACT_APP_BASE_URL_LOCAL : process.env.REACT_APP_BASE_URL;
 

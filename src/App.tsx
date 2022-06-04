@@ -22,7 +22,6 @@ import { useAuth } from './Context/AuthContext';
 import jwtDecode, { JwtPayload } from 'jwt-decode';
 
 const App = () => {
-
   const { user } = useAuth()
 
   if (user) {

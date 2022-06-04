@@ -25,8 +25,6 @@ const Product = () => {
     fetchProdutById()
   }, [])
 
-  console.log(productDetails)
-
   return (
     <div className="product-page-container">
       {isLoading ? <h1>Loading...</h1> : 
