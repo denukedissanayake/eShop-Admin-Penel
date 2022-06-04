@@ -1,59 +1,43 @@
+import { useEffect, useState } from "react";
+import { useAuth } from "../../Context/AuthContext";
+import { getAllOrders } from "./data/get-orders";
 import "./transactions.css"
 
 const Transactions = () => {
+  const { user } = useAuth()
+  const [orders, setOrders] = useState<any>();
+
+  const fetchOrders = async () => {
+    const { data } = await getAllOrders(user?.accesToken)
+    setOrders(data);
+  }
+
+  useEffect(() => {
+    fetchOrders();
+  }, [])
+
+  console.log(orders)
+  
   return (
       <div className="transaction-page-container">
           <div className="latest-transactions-container">
               <span className="latest-transactions-title">Wow!!! More Transactions</span>
+              {orders ? 
               <table className="latest-transactions-table">
-                <thead>
-                  <tr className="latest-transactions-table-row">
-                    <th className="latest-transactions-table-header">Customer</th>
-                    <th className="latest-transactions-table-header">Date</th>
-                    <th className="latest-transactions-table-header">Items</th>
-                    <th className="latest-transactions-table-header">Amount</th>
-                    <th className="latest-transactions-table-header">Status</th>
-                  </tr>
-                </thead> 
                 <tbody>
-                  <tr>
-                    <td className="latest-transactions-table-customer">
-                       <img className="latest-transactions-table-customer-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" ></img>   
-                       <span className="latest-transactions-table-customer-name">John Snow</span>
-                    </td>  
-                      <td className="latest-transactions-table-date">2022/05/01</td>
-                      <td className="latest-transactions-table-date">Addidas Shoe, Office Bag</td>
-                      <td className="latest-transactions-table-amount">$ 25</td>
-                      <td>
-                          <span className={`latest-transactions-table-status pending`} >Pending</span>
-                      </td>
-                  </tr>
-                  <tr>
-                    <td className="latest-transactions-table-customer">
-                       <img className="latest-transactions-table-customer-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" ></img>   
-                       <span className="latest-transactions-table-customer-name">John Snow</span>
-                    </td>  
-                      <td className="latest-transactions-table-date">2022/05/01</td>
-                      <td className="latest-transactions-table-date">Addidas Shoe, Office Bag</td>
-                      <td className="latest-transactions-table-amount">$ 25</td>
-                      <td>
-                          <span className={`latest-transactions-table-status pending`} >Pending</span>
-                      </td>
-                  </tr>
-                  <tr>
-                    <td className="latest-transactions-table-customer">
-                       <img className="latest-transactions-table-customer-image" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" ></img>   
-                       <span className="latest-transactions-table-customer-name">John Snow</span>
-                    </td>  
-                      <td className="latest-transactions-table-date">2022/05/01</td>
-                      <td className="latest-transactions-table-date">Addidas Shoe, Office Bag</td>
-                      <td className="latest-transactions-table-amount">$ 25</td>
-                      <td>
-                          <span className={`latest-transactions-table-status pending`} >Pending</span>
-                      </td>
-                  </tr>
+                  {orders && orders.map((order: any) => (
+                    <tr key={order._id}>
+                      <td className="latest-transactions-table-date">{order.createdAt.split("T")[0]}</td>
+                      <td className="latest-transactions-table-date">{order.products.map((product: any) => (
+                        product.productName + " "
+                      ))}</td>
+                      <td className="latest-transactions-table-amount">$ {order.amount / 100.00}</td>
+                      <td><span className={`latest-transactions-table-status pending`} >{order.status}</span></td>
+                      <td><button className="order-view-button">View Order</button></td>
+                    </tr> 
+                  ))}
                 </tbody>
-              </table>
+              </table>: <h1>No any orders YET!!!</h1> }
           </div>
     </div>
   )
