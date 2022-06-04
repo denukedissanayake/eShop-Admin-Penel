@@ -16,14 +16,17 @@ import InsertChartOutlinedRoundedIcon from '@mui/icons-material/InsertChartOutli
 import TagFacesIcon from '@mui/icons-material/TagFaces';
 import TheaterComedyRoundedIcon from '@mui/icons-material/TheaterComedyRounded';
 import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
+import { useAuth } from '../../Context/AuthContext';
 
 const Sidebar = () => {
     const [showModal, setShowModal] = useState(false);
+    const { setUser } = useAuth()
     const navigation = useNavigate()
 
     const logout = () => {
         localStorage.removeItem('user');
         setShowModal(false);
+        setUser(undefined)
         navigation("/login")
     }
 
