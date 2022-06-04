@@ -2,16 +2,23 @@ import "./Navbar.css"
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import { useAuth } from "../../Context/AuthContext";
+import { DUMMY_USER_IMAGE } from "../../utils/additional-data";
+import { Link } from "react-router-dom";
 
 type Props = {}
 
 const Navbar = (props: Props) => {
+  const {user} = useAuth()
+  
   return (
     <div className="nav-bar-container">
         <div className="nav-bar">
-            <div className="nav-bar-left">
-                <span className="nav-bar-left-text">ADMIN CENTER</span> 
-            </div>
+              <Link to="/" className="router-link">
+                <div className="nav-bar-left">
+                  <span className="nav-bar-left-text">ADMIN CENTER</span> 
+                </div>
+              </Link>
               <div className="nav-bar-right">
                   <div className="nav-bar-right-icons">
                     <NotificationsNoneOutlinedIcon />
@@ -21,12 +28,16 @@ const Navbar = (props: Props) => {
                     <LanguageOutlinedIcon />
                     <span className="noftification-count">2</span>
                   </div>
-                  <div className="nav-bar-right-icons">
-                    <SettingsOutlinedIcon />
-                  </div>
-                <div className="profile-pic-container">
-                    <img className="profile-pic" src="https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8=" alt="profile pic"/>
-                </div>
+                  <Link to="/profile" className="router-link">
+                    <div className="nav-bar-right-icons">
+                      <SettingsOutlinedIcon />
+                    </div>
+                  </Link>
+                  <Link to="/profile" className="router-link">
+                    <div className="profile-pic-container">
+                      <img className="profile-pic" src={user?.photo || DUMMY_USER_IMAGE} alt="profile pic"/>
+                    </div>
+                  </Link>
             </div>
         </div>
     </div>
